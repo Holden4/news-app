@@ -1,28 +1,20 @@
-"use strict";
 
 (function(exports) {
   var NewsList = function() {
     this.list = [];
   };
 
-  NewsList.prototype.getData = function() {
+  NewsList.prototype.getData = function () {
     var xmlhttp = new XMLHttpRequest();
-    xmlHTTP.onreadystatechange = function(){
-      if(this.readyState == 4 && this.status == 200) {
-        myData = JSON.parse(this.responeText);
-    }
-  };
+    xmlhttp.onreadystatechange = function(){
+      if(this.readyState == 4 && this.status == 200){
+        myData = JSON.parse(this.responseText);
+      }
+    };
+    xmlhttp.open("GET", "http://content.guardianapis.com/uk?show-editors-picks=true&show-fields=body&api-key=aa4d0029-5dc9-4ac6-86f9-d34f382c4d8e", true);
+    xmlhttp.send();
+    };
 
-  xmlhttp.open("GET", "http://content.guardianapis.com/uk?show-editors-picks=true&show-fields=body&api-key=aa4d0029-5dc9-4ac6-86f9-d34f382c4d8e", true);
-  xmlhttp.send();
-  delayAssignment(this);
-  };
-
-  function delayAssignment (item) {
-    setTimeout(function() {
-      item.addNews();
-    }, 1000);
-  }
 
   //
   // NewsList.prototype.addNews = function () {
